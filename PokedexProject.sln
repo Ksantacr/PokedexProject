@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokedexProject.API", "PokedexProject.API\PokedexProject.API.csproj", "{9E6A6886-9D3A-4F62-971A-FE50AF12147A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokedexProject.Test", "PokedexProject.Test\PokedexProject.Test.csproj", "{4D09486D-1E33-4028-9823-4601E41F4B96}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E6A6886-9D3A-4F62-971A-FE50AF12147A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E6A6886-9D3A-4F62-971A-FE50AF12147A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E6A6886-9D3A-4F62-971A-FE50AF12147A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E6A6886-9D3A-4F62-971A-FE50AF12147A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D09486D-1E33-4028-9823-4601E41F4B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D09486D-1E33-4028-9823-4601E41F4B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D09486D-1E33-4028-9823-4601E41F4B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D09486D-1E33-4028-9823-4601E41F4B96}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
