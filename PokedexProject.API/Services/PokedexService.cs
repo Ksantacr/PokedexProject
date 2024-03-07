@@ -6,7 +6,7 @@ namespace PokedexProject.API.Services;
 public interface IPokedexService
 {
     Task<IList<Pokemon>> getPokemons();
-    Task<Pokemon> getPokemon(int id);
+    Task<Pokemon> getPokemon(long id);
     Task<Pokemon> createPokemon(Pokemon pokemon);
     Task<Pokemon> updatePokemon(int id, Pokemon pokemonUpdated);
     Task deletePokemon(int id);
@@ -23,10 +23,11 @@ public class PokedexService : IPokedexService
         _http = http;
         _pokemons = new List<Pokemon>();
     }
+
     public async Task<IList<Pokemon>> getPokemons()
     {
-        var result  = await _http.GetAsync("https://pokeapi.co/api/v2/pokemon");
-        //var result  = await _http.GetFromJsonAsync<object>("https://pokeapi.co/api/v2/pokemon");
+        var result = await _http.GetAsync("https://pokeapi.co/api/v2/pokemon");
+        //var result2  = await _http.GetFromJsonAsync<PokemonResultAPI>("https://pokeapi.co/api/v2/pokemon");
 
         if (result.IsSuccessStatusCode)
         {
@@ -34,13 +35,17 @@ public class PokedexService : IPokedexService
             var jsonResult = JsonConvert.DeserializeObject<PokemonResultAPI>(json);
             return jsonResult.results;
         }
-        
+
         return new List<Pokemon>();
     }
 
-    public Task<Pokemon> getPokemon(int id)
+    public async Task<Pokemon> getPokemon(long id)
     {
-        throw new NotImplementedException();
+        var result = await _http.GetFromJsonAsync<PokemonById>($"https://pokeapi.co/api/v2/pokemon/{id}");
+
+        //throw new Exception("server exception");
+
+        return new Pokemon { id = result.Id, name = result.Name, url = $"https://pokeapi.co/api/v2/pokemon/{id}" };
     }
 
     public Task<Pokemon> createPokemon(Pokemon pokemon)

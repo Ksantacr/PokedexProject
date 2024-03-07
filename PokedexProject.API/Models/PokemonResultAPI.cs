@@ -2,9 +2,10 @@ namespace PokedexProject.API.Models;
 
 public class Pokemon
 {
-    public int id { get; set; }
+    public long id { get; set; }
     public string name { get; set; }
     public string url { get; set; }
+    
 }
 
 public class PokemonResultAPI

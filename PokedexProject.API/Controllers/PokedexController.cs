@@ -3,8 +3,9 @@ using PokedexProject.API.Services;
 
 namespace PokedexProject.API.Controllers;
 
+[ApiController]
 [Route("[controller]")]
-public class PokedexController : Controller
+public class PokedexController : ControllerBase
 {
     private readonly IPokedexService _pokedexService;
 
@@ -20,6 +21,21 @@ public class PokedexController : Controller
 
         var list  = await this._pokedexService.getPokemons();
         return Ok(list);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetPokemon(long id)
+    {
+        try
+        {
+            var result = await this._pokedexService.getPokemon(id);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            //Console.WriteLine(ex.);
+            return BadRequest(ex.Message);
+        }
     }
     
     
