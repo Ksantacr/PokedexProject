@@ -18,8 +18,8 @@ public class Program
         builder.Services.AddControllers();
 
 
-        builder.Services.AddTransient<IPokedexService, PokedexService>(); //<IPokedexService, PokedexService>();
-        //builder.Services.AddSingleton<HttpClient>();
+        //builder.Services.AddTransient<IPokedexService, PokedexService>(); //<IPokedexService, PokedexService>();
+        builder.Services.AddSingleton<IPokedexService, PokedexService>(); 
         builder.Services.AddHttpClient();
         var app = builder.Build();
 

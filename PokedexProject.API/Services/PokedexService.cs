@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using PokedexProject.API.Dtos;
 using PokedexProject.API.Models;
 
 namespace PokedexProject.API.Services;
@@ -7,7 +8,7 @@ public interface IPokedexService
 {
     Task<IList<Pokemon>> getPokemons();
     Task<Pokemon> getPokemon(long id);
-    Task<Pokemon> createPokemon(Pokemon pokemon);
+    Task<Pokemon> createPokemon(PokemonDto pokemonDto);
     Task<Pokemon> updatePokemon(int id, Pokemon pokemonUpdated);
     Task deletePokemon(int id);
     Task seedPokemons();
@@ -48,9 +49,12 @@ public class PokedexService : IPokedexService
         return new Pokemon { id = result.Id, name = result.Name, url = $"https://pokeapi.co/api/v2/pokemon/{id}" };
     }
 
-    public Task<Pokemon> createPokemon(Pokemon pokemon)
+    public Task<Pokemon> createPokemon(PokemonDto pokemonDto)
     {
-        throw new NotImplementedException();
+        var pokemonId = _pokemons.Count() + 1;
+        var pokemon = new Pokemon { name = pokemonDto.name, id = pokemonId, url = $"https://pokeapi.co/api/v2/pokemon/{pokemonId}"};
+        _pokemons.Add(pokemon);
+        return Task.FromResult<Pokemon>(pokemon);
     }
 
     public Task<Pokemon> updatePokemon(int id, Pokemon pokemonUpdated)

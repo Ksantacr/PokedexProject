@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PokedexProject.API.Dtos;
 using PokedexProject.API.Services;
 
 namespace PokedexProject.API.Controllers;
@@ -41,8 +42,9 @@ public class PokedexController : ControllerBase
     
     // Post
     [HttpPost]
-    public IActionResult Post()
+    public async Task<IActionResult> Post([FromBody] PokemonDto pokemonDto)
     {
-        return Ok("Hello");
+        var result = await this._pokedexService.createPokemon(pokemonDto);
+        return Ok(result);
     }
 }
