@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PokedexProject.API.Dtos;
+using PokedexProject.API.Entities;
 using PokedexProject.API.Services;
 
 namespace PokedexProject.API.Controllers;
@@ -14,6 +15,16 @@ public class PokedexController : ControllerBase
     {
         _pokedexService = pokedexService;
     }
+    
+    // [HttpGet("db")]
+    // public IActionResult TestDb()
+    // {
+    //     _dbContext.Database.EnsureCreated();
+    //     var list  = _dbContext.Pokemons.ToList();
+    //     return Ok(list);
+    // }
+    
+    
     // GET
     [HttpGet]
     public async Task<IActionResult> Index()

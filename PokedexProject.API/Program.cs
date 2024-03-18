@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using PokedexProject.API.Entities;
 using PokedexProject.API.Services;
 
 namespace PokedexProject.API;
@@ -16,10 +18,13 @@ public class Program
         builder.Services.AddSwaggerGen();
 
         builder.Services.AddControllers();
+        builder.Services.AddDbContext<PokemonDbContext>(options =>
+            options.UseMySQL(builder.Configuration.GetConnectionString("PokemonConnection")));
+        //name=ConnectionStrings:DefaultConnection
 
 
-        //builder.Services.AddTransient<IPokedexService, PokedexService>(); //<IPokedexService, PokedexService>();
-        builder.Services.AddSingleton<IPokedexService, PokedexService>(); 
+        builder.Services.AddTransient<IPokedexService, PokedexService>(); //<IPokedexService, PokedexService>();
+        //builder.Services.AddSingleton<IPokedexService, PokedexService>(); 
         builder.Services.AddHttpClient();
         var app = builder.Build();
 

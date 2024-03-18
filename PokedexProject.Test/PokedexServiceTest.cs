@@ -15,7 +15,7 @@ public class PokedexServiceTest
         count = 1,
         next = "",
         previous = { },
-        results = new List<Pokemon>() { new() { id = 1, name = "kevin", url = "https://pokeapi.co/api/v2/pokemon/1" } }
+        results = new List<PokemonResult>() { new() { id = 1, name = "kevin", url = "https://pokeapi.co/api/v2/pokemon/1" } }
     };
 
     public PokedexServiceTest()
@@ -44,7 +44,7 @@ public class PokedexServiceTest
         });
 
         var handler = moq.Object;
-        _pokedexService = new PokedexService(new HttpClient(handler));
+        _pokedexService = new PokedexService(new HttpClient(handler), null);
     }
 
     [Fact]
